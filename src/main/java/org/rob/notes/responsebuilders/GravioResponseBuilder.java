@@ -39,6 +39,11 @@ public class GravioResponseBuilder implements ResponseBuilder {
         return new MediaType("image", "svg+xml");
     }
 
+    @Override
+    public boolean cached() {
+        return true;
+    }
+
     private String encode(File doc) throws IOException {
         StringBuilder sb = new StringBuilder();
         Files.lines(doc.toPath()).forEach(line -> {

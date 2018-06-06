@@ -38,4 +38,8 @@ public class PlantUmlResponseBuilder implements ResponseBuilder {
         return new MediaType("image", "svg+xml");
     }
 
+    @Override
+    public boolean cached() {
+        return true;
+    }
 }

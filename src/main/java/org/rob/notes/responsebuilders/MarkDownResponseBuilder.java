@@ -33,4 +33,9 @@ public class MarkDownResponseBuilder implements ResponseBuilder {
     public MediaType getMediaType() {
         return MediaType.TEXT_HTML;
     }
+
+    @Override
+    public boolean cached() {
+        return false;
+    }
 }
