@@ -5,7 +5,7 @@ import java.nio.file.Files;
 
 import org.springframework.http.MediaType;
 
-public class AllBytesResponseBuilder implements ResponseBuilder {
+public class AllBytesResponseBuilder implements FileResponseBuilder {
 
     private final MediaType mediaType;
 

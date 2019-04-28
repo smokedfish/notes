@@ -14,6 +14,14 @@ A fat jar is built with a main class in the manifest.
 ```
 Files in notesDir are rendered according to their extensions
 * md : commonmark see [here](http://commonmark.org/)
-* pu : plantuml see [here](http://plantuml.com/)
+* puml : plantuml see [here](http://plantuml.com/)
+* svg : 
+* png : 
+
+Tables are also supported:
+
+Vegatable | Fruit(center) | Fish(right)
+----------|:-------------:|------------:
+Cabbage   | Apple         | Cod
 
 There are two possible rendering engines for the 'pu' extension: plantuml server or gravio - you change the code to select which.

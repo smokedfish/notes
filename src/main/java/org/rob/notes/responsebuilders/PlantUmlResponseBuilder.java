@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestOperations;
 
-public class PlantUmlResponseBuilder implements ResponseBuilder {
+public class PlantUmlResponseBuilder implements FileResponseBuilder {
     private final RestOperations restTemplate;
 
     public PlantUmlResponseBuilder(RestOperations restTemplate) {

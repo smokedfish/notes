@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestOperations;
 
-public class GravioResponseBuilder implements ResponseBuilder {
+public class GravioResponseBuilder implements FileResponseBuilder {
     private final RestOperations restTemplate;
 
     public GravioResponseBuilder(RestOperations restTemplate) {
