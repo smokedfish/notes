@@ -1,4 +1,4 @@
-package org.rob.notes.responsebuilders;
+package org.rob.notes.responsebuilders.markdown;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,9 +9,11 @@ import java.util.List;
 
 import org.commonmark.Extension;
 import org.commonmark.ext.gfm.tables.TablesExtension;
+import org.commonmark.ext.heading.anchor.HeadingAnchorExtension;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
+import org.rob.notes.responsebuilders.FileResponseBuilder;
 import org.springframework.http.MediaType;
 
 public class MarkDownResponseBuilder implements FileResponseBuilder {
@@ -19,7 +21,9 @@ public class MarkDownResponseBuilder implements FileResponseBuilder {
     private final HtmlRenderer renderer;
 
     public MarkDownResponseBuilder() {
-        List<Extension> extensions = Arrays.asList(TablesExtension.create());
+        List<Extension> extensions = Arrays.asList(
+                TablesExtension.create(),
+                HeadingAnchorExtension.create());
 
         this.parser = Parser.builder()
                 .extensions(extensions)
@@ -34,25 +38,21 @@ public class MarkDownResponseBuilder implements FileResponseBuilder {
     public byte[] response(File doc) throws Exception {
         try (InputStreamReader input = new InputStreamReader(new FileInputStream(doc), StandardCharsets.UTF_8)) {
             Node document = parser.parseReader(input);
+            ContentsBuilder contentsBuilder = new ContentsBuilder();
+            document.accept(contentsBuilder);
+            String eol = System.lineSeparator();
             StringBuilder sb = new StringBuilder()
-            .append("<!DOCTYPE html>")
-            .append("<html>")
-            .append("<head>")
-            .append("<link rel=\"stylesheet\" href=\"/github.css\">")
-            .append("<style>\n" +
-                    "\t\t\tbody {\n" +
-                    "\t\t\t\tbox-sizing: border-box;\n" +
-                    "\t\t\t\tmin-width: 200px;\n" +
-                    "\t\t\t\tmax-width: 980px;\n" +
-                    "\t\t\t\tmargin: 0 auto;\n" +
-                    "\t\t\t\tpadding: 45px;\n" +
-                    "\t\t\t}\n" +
-                    "\t\t</style>")
-                    .append("</head>")
-            .append("<body>")
-            .append("<article class=\"markdown-body\">");
+            .append("<!doctype html>").append(eol)
+            .append("<html>").append(eol)
+            .append("<head>").append(eol)
+            .append("<link rel=\"stylesheet\" href=\"/github.css\">").append(eol)
+            .append("</head>").append(eol)
+            .append("<body>").append(eol)
+            .append("<article class=\"markdown-body\">").append(eol);
+            renderer.render(contentsBuilder.document(), sb);
             renderer.render(document, sb);
-            sb.append("</body>")
+            sb.append("</article>").append(eol)
+            .append("</body>").append(eol)
             .append("</html>");
             return sb.toString().getBytes(StandardCharsets.UTF_8);
         }

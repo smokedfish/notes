@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
+import org.rob.notes.responsebuilders.puml.PlantUmlEncoder;
 
 import static org.junit.Assert.assertEquals;
 

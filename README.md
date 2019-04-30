@@ -25,3 +25,8 @@ Vegatable | Fruit(center) | Fish(right)
 Cabbage   | Apple         | Cod
 
 There are two possible rendering engines for the 'pu' extension: plantuml server or gravio - you change the code to select which.
+
+# Things to do:
+* Build a contents page on each page
+* Build an index for whole site
+* Support multiple roots

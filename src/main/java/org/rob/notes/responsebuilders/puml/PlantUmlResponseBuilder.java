@@ -1,4 +1,4 @@
-package org.rob.notes.responsebuilders;
+package org.rob.notes.responsebuilders.puml;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 
+import org.rob.notes.responsebuilders.FileResponseBuilder;
+import org.rob.notes.responsebuilders.puml.PlantUmlEncoder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;

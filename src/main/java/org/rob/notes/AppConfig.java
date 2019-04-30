@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.rob.notes.responsebuilders.*;
+import org.rob.notes.responsebuilders.markdown.MarkDownResponseBuilder;
+import org.rob.notes.responsebuilders.puml.PlantUmlResponseBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

@@ -1,4 +1,4 @@
-package org.rob.notes.responsebuilders;
+package org.rob.notes.responsebuilders.puml;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
